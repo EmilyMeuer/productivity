@@ -1,0 +1,7 @@
+{
+    "photos" : [
+                {   "source" : "./img/assisi-rail.jpg" }
+                {   "source" : "./img/assisi.jpg" }
+                {   "source" : "./img/cinque-bay.jpg" }
+    ]
+}

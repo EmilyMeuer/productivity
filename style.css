@@ -1,0 +1,80 @@
+/*
+    Emily Meuer
+    02/23/2018
+
+    Style sheet for Productivity web page
+ 
+    Technique for centering header-bar text vertically taken from https://stackoverflow.com/questions/13994549/trouble-vertically-centering-text-in-another-div-with-relative-sizing/16195362#16195362 .
+ 
+    Initial W3 Schools color: #ff6666
+*/
+
+body {
+    /*background-color: #ffeeff;*/
+}
+
+a:link, a:visited {
+    background-color: #aa00aa;
+    color: white;
+    padding: .1rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: #ff66ff;
+}
+
+input button:active {
+    background-color: #aa00aa;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.header-bar {
+    background-color: #ffeeff;
+    font-size:      2rem;
+    font-weight:    bold;
+    height:         3.8rem;
+    line-height:    3.5rem;
+    padding:        .5rem;
+    width:          100%;
+}
+
+.header-bar a {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.header-buttons {
+    float:   right;
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+
+.clear-left {
+    clear:      left;
+}
+
+.clear-right {
+    clear:      right;
+}
+
+th {
+    border: 5px double #aa00aa;
+}
+
+td {
+    border: 2px solid #ffeeff;
+}
+
+.italic {
+    font-style: italic;
+}
+
+#tasks {
+    border: 5px double #aa00aa;
+}

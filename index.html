@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<!--
+	Emily Meuer
+	02/23/2018
+	
+	Assignment 1
+    Productivity Web Page
+ 
+     - Color the clicked "Let's do this!" #aa00aa
+ -->
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="style.css"/>
+        
+        <script type="text/javascript" src="productivity.js"></script>
+        <title>Productivity</title>
+    </head>
+    
+    <body>
+        <div class="header-bar clear-right">
+            Productivity
+            <a class="header-buttons" href="./index.html">Work</a>
+            <a class="header-buttons" href="./photo-gallery.html">Leisure</a>
+        </div>
+        
+        <br><br>
+        
+        <span class="clear-left">Add a task:</span>
+        <input type="text" name="taskText" id="taskText">
+    
+        <span class="italic">Deadline:</span>
+        <input type="text" name="deadline" id="deadline">
+    
+        <span class="italic">Category:</span>
+        <select name="categories" id="categories">
+            <option value="school">School</option>
+            <option value="work">Work</option>
+            <option value="home">Home</option>
+            <option value="jobs">Jobs</option>
+        </select>
+
+        <input type="button" onclick="addTask()" value="Let's do this!">
+        
+        <br><br>
+    
+        <table id="tasks">
+            <th>Completed</th>
+            <th id="taskHeader" onclick="sortByTask()">Task</th>
+            <th id="deadlineHeader" onclick="sortByDeadline()">Deadline</th>
+            <th id="categoryHeader" onclick="sortByCategory()">Category</th>
+            <th id="dateHeader" onclick="sortByDate()">Date Added</th>
+        </table>
+    
+    </body>
+    
+    
+</html>
