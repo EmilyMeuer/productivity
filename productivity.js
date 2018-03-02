@@ -30,11 +30,37 @@ var categoryColors   = {
 window.onload = function() {
     // Set Category drop-down:
     var categoryDropDown    = document.getElementById("categories");
-    for(var i = 0; i < categoryNames.length; i++)
-    {
-        categoryDropDown.innerHTML  = categoryDropDown.innerHTML + "<option value=" + categoryNames[i] + ">" + categoryNames[i] + "</option>\"";
+//    for(var i = 0; i < categoryNames.length; i++)
+    for(var category in categoryColors) {
+        categoryDropDown.innerHTML  = categoryDropDown.innerHTML + "<option value=" + category + ">" + category + "</option>\"";
     } // for
+    
+    // Fill the edit-categories table:
+    var editCategoriesTable = document.getElementById("edit-categories");
+    for(var category in categoryColors) {
+        editCategoriesTable.innerHTML   = editCategoriesTable.innerHTML + "<tr><td>\"" + category + "\"</td><td><input type=color id=\"" + category + "color\" value=\"" + categoryColors[category] + "\"></td></tr>";
+    }
+    
+    // Make the corner x hide the gray-background/edit-categories table:
+    document.getElementById("close-edit").addEventListener("click", function() {
+                                                                document.getElementById("gray-background").style.display  = "none";
+                                                    setCategoryColor();
+                                                                }, false);
+    
 };
+
+// Clicking outside the table will also close it (but by not just adding the event to grayBackground's on-click, clicking on the table will not close it):
+window.onclick = function(event) {
+    var grayBackground  = document.getElementById("gray-background");
+    var container       = document.getElementById("container");
+    var flexContainer       = document.getElementById("flex-container");
+ //   window.alert("clicked at all; event.target = " + event.target);
+    if ( (event.target == grayBackground) || (event.target == container) || (event.target == flexContainer)) {
+ //       window.alert("clicked on the background");
+        grayBackground.style.display = "none";
+        setCategoryColor();
+    }
+}
 
 function addTask() {
     var taskListElement = document.getElementById("tasks");
@@ -45,7 +71,7 @@ function addTask() {
     var tasksHTML   = taskListElement.innerHTML;
     var date      = new Date();
     taskListElement.innerHTML   = taskListElement.innerHTML +
-        "<tr style=\"background-color:" + color + "\"><td><input type=\"checkbox\"></input></td>" +
+        "<tr class=\"tasks\" style=\"background-color:" + color + "\"><td><input type=\"checkbox\"></input></td>" +
         "<td>" + taskTextElement.value + "</td>" +
         "<td>" + deadline + "</td>" +
         "<td>" + category + "</td>" +
@@ -97,7 +123,7 @@ function sortTasks(sortFunction) {
     for(var i = 0; i < allTasks.length; i++)
     {
         taskListElement.innerHTML   = taskListElement.innerHTML +
-        "<tr style=\"background-color:" + categoryColors[allTasks[i].category] + "\"><td><input type=\"checkbox\"></input></td>" +
+        "<tr class=\"tasks\" style=\"background-color:" + categoryColors[allTasks[i].category] + "\"><td><input type=\"checkbox\"></input></td>" +
         "<td>" + allTasks[i].task + "</td>" +
         "<td>" + allTasks[i].deadline + "</td>" +
         "<td>" + allTasks[i].category + "</td>" +
@@ -106,8 +132,16 @@ function sortTasks(sortFunction) {
 } // sortTasks
 
 function editCategories() {
-    
+    document.getElementById("gray-background").style.display = "block";
 } // editCategories
+
+function setCategoryColor() {
+    for(var category in categoryColors) {
+        categoryColors[category]    = document.getElementById(category + "color").value;
+    }
+    // Doesn't actually sort; just updates the elements using the new colors:
+    sortTasks(undefined);
+}
 
 /*
     Date picker

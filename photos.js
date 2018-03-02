@@ -5,7 +5,28 @@
     Productivity Website
 */
 
-window.onload=loadPhotos;
+window.onload=new function() {
+    loadPhotos();
+    
+    // Make the corner x hide the gray-background/edit-categories table:
+    document.getElementById("close-photo").addEventListener("click", function() {
+                                                           document.getElementById("black-background").style.display  = "none";
+                                                           }, false);
+    
+
+};
+
+// Clicking outside the table will also close it (but by not just adding the event to blackBackground's on-click, clicking on the table will not close it):
+window.onclick = function(event) {
+    var blackBackground  = document.getElementById("black-background");
+    var container       = document.getElementById("photo-container");
+    var flexContainer       = document.getElementById("photo-flex-container");
+    //   window.alert("clicked at all; event.target = " + event.target);
+    if ( (event.target == blackBackground) || (event.target == container) || (event.target == flexContainer)) {
+        //       window.alert("clicked on the background");
+        blackBackground.style.display = "none";
+    }
+}
 
 function loadPhotos() {
     var req;
@@ -45,5 +66,6 @@ function loadPhotos() {
 } // loadPhotos
 
 function enlarge() {
+    document.getElementById("black-background").style.display = "block";
     document.getElementById("large-image").src  = this.src;
 }

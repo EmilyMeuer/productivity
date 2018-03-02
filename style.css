@@ -79,17 +79,104 @@ td {
     font-style: italic;
 }
 
-#editCategories {
-    background: #333333;
-    margin-left: auto;
-    margin-right: auto;
-    width:          20%;
+#cat-header, #color-header {
+    width: 20%;
+}
+
+.close {
+    position:       relative;
+ /*   margin-left:    90%;*/
+    width:          2rem;
+    color:          #aaa;
+    float:          right;
+    text-align:     right;
+    font-size:      2rem;
+    font-weight:    bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#container {
+    height:     55%;
+    padding:    1rem;
+}
+
+#flex-container {
+    display:            flex;
+    height:             50%;
+    justify-content:    center;
+    align-items:        center;
+}
+
+#edit-categories {
+    position:               absolute;
+    background-color:       #ff99cc;
+    width:                  20em;
+}
+
+#gray-background {
+    display:    none;
+    position:   fixed;
+    top:        0;
+    left:       0;
+    z-index:    1;
+    width:      100%;
+    height:     100%;
+    overflow:   auto;   /*  will scroll if needed */
+    background-color: #000000; /* In case rgba isn't supported */
+    background-color: rgba(0, 0, 0, .4);
+}
+
+#photo-container {
+    height:     100%;
+    padding:    1rem;
+}
+
+#photo-flex-container {
+    top:             100vh;
+    display:            flex;
+    height:             100%;
+    justify-content:    center;
+    align-items:        center;
+    
+    animation-name: animatebottom;
+    animation-duration: 2s
 }
 
 #large-image {
-    margin-left: 25%;
-    margin-right: 25%;
-    width: 50%;
+    /*
+    position:               absolute;
+    background-color:       #ff99cc;
+    width:                  20em;
+    */
+     margin-left: 25%;
+     margin-right: 25%;
+     width: 50%;
+     
+
+}
+
+@keyframes animatebottom {
+    0%   {height: 0%}
+    100% {height: 100%}
+}
+
+#black-background {
+    display:    none;
+    position:   fixed;
+    top:        0;
+    left:       0;
+    z-index:    1;
+    width:      100%;
+    height:     100%;
+    overflow:   auto;   /*  will scroll if needed */
+    background-color: #000000; /* In case rgba isn't supported */
+    background-color: rgba(0, 0, 0, .4);
 }
 
 #photos {
