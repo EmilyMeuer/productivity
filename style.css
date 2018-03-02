@@ -26,6 +26,10 @@ a:hover, a:active {
     background-color: #ff66ff;
 }
 
+img {
+    margin: 2%;
+}
+
 input button:active {
     background-color: #aa00aa;
 }
@@ -73,6 +77,23 @@ td {
 
 .italic {
     font-style: italic;
+}
+
+#editCategories {
+    background: #333333;
+    margin-left: auto;
+    margin-right: auto;
+    width:          20%;
+}
+
+#large-image {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+}
+
+#photos {
+    width: 100%;
 }
 
 #tasks {

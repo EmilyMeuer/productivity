@@ -2,25 +2,50 @@
     Emily Meuer
     02/23/2018
  
-  - sort ascending -- don't need descending
   - can use HTML color picker
+ 
+ 
+ Adding categories:
+  - categories themselves should be objects, and they can have a color!
+  - they should be all set in the JavaScript so that I can add to the list.
+ 
+  - I still need to associate a category with a task,
+    and with a color;
+ It needs to be independent of that particular task -- no problem; it gets that
+ from the document.getElementById.  ** But will that category be able to return my color?
 */
 
-window.onload = function() {
-    
+var allTasks    = [];
+var categoryNames = [   // use this to get the strings and use the strings to get the colors
+    "school", "work", "home", "jobs"
+];
+var categoryColors   = {
+    "school" : "#99ff66",
+    "work" : "#00ccff",
+    "home" : "#ffff99",
+    "jobs" : "#ff99cc"
 };
 
-var allTasks    = [];
+
+window.onload = function() {
+    // Set Category drop-down:
+    var categoryDropDown    = document.getElementById("categories");
+    for(var i = 0; i < categoryNames.length; i++)
+    {
+        categoryDropDown.innerHTML  = categoryDropDown.innerHTML + "<option value=" + categoryNames[i] + ">" + categoryNames[i] + "</option>\"";
+    } // for
+};
 
 function addTask() {
     var taskListElement = document.getElementById("tasks");
     var taskTextElement  = document.getElementById("taskText");
     var deadline  = document.getElementById("deadline").value;
     var category  = document.getElementById("categories").value;
+    var color     = categoryColors[category];
     var tasksHTML   = taskListElement.innerHTML;
     var date      = new Date();
     taskListElement.innerHTML   = taskListElement.innerHTML +
-        "<tr><td><input type=\"checkbox\"></input></td>" +
+        "<tr style=\"background-color:" + color + "\"><td><input type=\"checkbox\"></input></td>" +
         "<td>" + taskTextElement.value + "</td>" +
         "<td>" + deadline + "</td>" +
         "<td>" + category + "</td>" +
@@ -72,13 +97,17 @@ function sortTasks(sortFunction) {
     for(var i = 0; i < allTasks.length; i++)
     {
         taskListElement.innerHTML   = taskListElement.innerHTML +
-        "<tr><td><input type=\"checkbox\"></input></td>" +
+        "<tr style=\"background-color:" + categoryColors[allTasks[i].category] + "\"><td><input type=\"checkbox\"></input></td>" +
         "<td>" + allTasks[i].task + "</td>" +
         "<td>" + allTasks[i].deadline + "</td>" +
         "<td>" + allTasks[i].category + "</td>" +
         "<td>" + allTasks[i].dateAdded.toLocaleDateString() + " " + allTasks[i].dateAdded.toLocaleTimeString() + "</td></tr>";
     }
 } // sortTasks
+
+function editCategories() {
+    
+} // editCategories
 
 /*
     Date picker

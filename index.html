@@ -16,7 +16,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="style.css"/>
         
-        <script type="text/javascript" src="productivity.js"></script>
         <title>Productivity</title>
     </head>
     
@@ -37,16 +36,28 @@
     
         <span class="italic">Category:</span>
         <select name="categories" id="categories">
+            <!--
             <option value="school">School</option>
             <option value="work">Work</option>
             <option value="home">Home</option>
             <option value="jobs">Jobs</option>
+            -->
         </select>
 
         <input type="button" onclick="addTask()" value="Let's do this!">
-        
         <br><br>
-    
+        
+        <input type="button" onclick="editCategories()" value="Edit Categories">
+        <br><br>
+        
+        <div id="editCategories">
+            <table>
+                <th>Category</th>
+                <th>Color</th>
+            </table>
+        </div>
+        
+        
         <table id="tasks">
             <th>Completed</th>
             <th id="taskHeader" onclick="sortByTask()">Task</th>
@@ -58,4 +69,5 @@
     </body>
     
     
+    <script type="text/javascript" src="productivity.js"></script>
 </html>

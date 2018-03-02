@@ -12,6 +12,8 @@ function loadPhotos() {
     var reqObject;
     
     var tableElement    = document.getElementById("photos");
+    var photoElement;
+    var width   = window.innerWidth / 5;
     
     req = new XMLHttpRequest();
     req.open("GET", "https://emilymeuer.github.io/json/photos.json", true);
@@ -23,16 +25,25 @@ function loadPhotos() {
         
             for(var i = 0; i < reqObject.photos.length; i++)
             {
-                tableElement.innerHTML  = tableElement.innerHTML + "<td><img src=\"" + reqObject.photos[i].source + "\" width=\"500\"></td>";
+                var size;
+                // Figure out whether the height is bigger than the width;
+                // Set height and width to ___ and alia accordingly.
+                tableElement.innerHTML  = tableElement.innerHTML + "<img id=\"photo" + i + "\" src=\"" + reqObject.photos[i].source + "\" width=\"" + width + "\">";
+            }
+            
+            for(var j = 0; j < reqObject.photos.length; j++)
+            {
+                photoElement    = document.getElementById("photo" + j);
+                photoElement.addEventListener("click", enlarge, false);
+                //window.alert("j = " + j + "; photoElement.height = " + photoElement.width);
             }
             
             // Photo table - no border
- 
-            /*for(var i = 0; i < reqObject.photos.length; i++)
-            {
-                window.alert("reqObject.photos[" + i + "].source = " + reqObject.photos[i].source);
-            }
-             */
+
         }
     } // req-onreadystatechange
 } // loadPhotos
+
+function enlarge() {
+    document.getElementById("large-image").src  = this.src;
+}
